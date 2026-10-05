@@ -20,6 +20,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,0.0.0.0").split(
 # Application definition
 INSTALLED_APPS = [
     # Django core apps
+    "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.staticfiles",
 
@@ -33,6 +34,8 @@ INSTALLED_APPS = [
     "apps.chat",
     "apps.quiz",
     "apps.studyplan",
+    "apps.classifier",
+    "apps.analytics",
 ]
 
 MIDDLEWARE = [

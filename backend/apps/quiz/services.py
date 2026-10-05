@@ -2,7 +2,7 @@
 Quiz service layer managing quiz generation, persistence, and evaluation.
 """
 import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 
 from core.mongo import get_collection
 from core.exceptions import QuizError
@@ -122,3 +122,25 @@ def evaluate_quiz_submission(
         },
         "detailed_results": detailed_results,
     }
+
+
+def get_user_quiz_history(user_id: str) -> List[Dict[str, Any]]:
+    """Retrieves all past quiz submissions and scores for a user."""
+    results_col = get_collection("quiz_results")
+    cursor = results_col.find({"user_id": str(user_id)}).sort("created_at", -1)
+
+    history = []
+    for doc in cursor:
+        doc.pop("_id", None)
+        history.append(doc)
+    return history
+
+
+def get_quiz_by_id(quiz_id: str, user_id: Optional[str] = None) -> Dict[str, Any]:
+    """Retrieves a quiz by ID."""
+    quizzes_col = get_collection("quizzes")
+    doc = quizzes_col.find_one({"quiz_id": quiz_id})
+    if not doc:
+        raise QuizError("Quiz not found.", details={"quiz_id": quiz_id})
+    doc.pop("_id", None)
+    return doc

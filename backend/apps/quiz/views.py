@@ -8,7 +8,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 
 from apps.quiz.serializers import QuizGenerateRequestSerializer, QuizSubmitRequestSerializer
-from apps.quiz.services import create_and_store_quiz, evaluate_quiz_submission
+from apps.quiz.services import (
+    create_and_store_quiz,
+    evaluate_quiz_submission,
+    get_user_quiz_history,
+    get_quiz_by_id,
+)
 
 
 class QuizGenerateView(APIView):
@@ -57,3 +62,27 @@ class QuizSubmitView(APIView):
         )
 
         return Response(result, status=status.HTTP_200_OK)
+
+
+class QuizHistoryView(APIView):
+    """
+    GET /api/quiz/history/
+    Returns list of past quiz results for authenticated user.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        history = get_user_quiz_history(user_id=request.user.id)
+        return Response(history, status=status.HTTP_200_OK)
+
+
+class QuizDetailView(APIView):
+    """
+    GET /api/quiz/<quiz_id>/
+    Retrieves a generated quiz by quiz_id.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, quiz_id):
+        quiz = get_quiz_by_id(quiz_id=quiz_id, user_id=request.user.id)
+        return Response(quiz, status=status.HTTP_200_OK)

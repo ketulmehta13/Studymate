@@ -5,7 +5,7 @@ Analyzes user quiz performance from MongoDB, detects weak topics, and generates 
 import os
 import uuid
 import datetime
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 
 from ai.studyplan.schemas import StudyPlan, DailyTask, TopicAnalysis
 from ai.studyplan.prompts import STUDYPLAN_PROMPT_TEMPLATE
@@ -160,12 +160,32 @@ def _generate_fallback_study_plan(
     )
 
 
-def generate_study_plan(user_id: str) -> Dict[str, Any]:
+def generate_study_plan(
+    user_id: str,
+    custom_topics: Optional[List[str]] = None,
+    exam_date: Optional[str] = None,
+    available_time: Optional[str] = None,
+    priority: Optional[str] = None,
+) -> Dict[str, Any]:
     """
-    Generates an adaptive weekly study plan for a user based on their quiz performance.
+    Generates an adaptive weekly study plan for a user based on their quiz performance or specified topics.
     """
     logger.info(f"Generating adaptive study plan for user {user_id}...")
     weak_topics, topic_scores, analyses = analyze_user_quiz_performance(user_id)
+
+    if custom_topics and len(custom_topics) > 0:
+        # User explicitly requested focus on these topics
+        for ct in custom_topics:
+            if ct not in weak_topics:
+                weak_topics.insert(0, ct)
+                if ct not in topic_scores:
+                    topic_scores[ct] = 60.0
+                    analyses.insert(0, TopicAnalysis(
+                        topic=ct,
+                        accuracy_percentage=60.0,
+                        status="Target Subject",
+                        recommendation=f"Requested study focus for upcoming exam ({exam_date or 'soon'})."
+                    ))
 
     # Retrieve relevant notes for weak topics if available
     search_query = " ".join(weak_topics[:2]) if weak_topics else "Core concepts"
@@ -177,6 +197,12 @@ def generate_study_plan(user_id: str) -> Dict[str, Any]:
         logger.info("OPENAI_API_KEY not configured. Generating offline study plan.")
         plan_obj = _generate_fallback_study_plan(weak_topics, topic_scores, analyses)
         data = plan_obj.model_dump()
+        if exam_date:
+            data["exam_date"] = exam_date
+        if available_time:
+            data["available_time"] = available_time
+        if priority:
+            data["priority"] = priority
         data["plan_id"] = str(uuid.uuid4())
         data["user_id"] = str(user_id)
         data["created_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()

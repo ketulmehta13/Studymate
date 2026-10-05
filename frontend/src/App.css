@@ -1,0 +1,108 @@
+/* ─── StudyMate AI — Application Styles ─── */
+
+/* Subtle bounce animation for the auth page logo */
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 3s ease-in-out infinite;
+}
+
+/* Page transitions */
+main > div {
+  animation: fadeSlideIn 0.3s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Textarea override for consistent styling */
+textarea.input-field {
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #f8fafc;
+}
+
+/* Focus-visible for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Sticky navbar spacing */
+header + main {
+  padding-top: 0;
+}
+
+/* Chat message list scrollable area */
+.chat-messages-container {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+/* Quiz option hover shimmer */
+.quiz-option-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.quiz-option-hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.03),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.quiz-option-hover:hover::after {
+  left: 100%;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .glass-panel {
+    border-radius: 12px;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Smooth scrolling on the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent content shift when scrollbar appears */
+html {
+  overflow-y: scroll;
+}
