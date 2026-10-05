@@ -20,6 +20,10 @@ db.sqlite3
 # AI / Vector databases
 faiss_index/
 chroma_db/
+backend/data/uploads/*
+!backend/data/uploads/.gitkeep
+backend/data/vectorstore/*
+!backend/data/vectorstore/.gitkeep
 
 # Node
 node_modules/

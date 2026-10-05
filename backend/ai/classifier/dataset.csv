@@ -1,0 +1,76 @@
+text,topic
+"Supervised learning algorithms map input features to continuous or categorical target labels using labeled data.",Machine Learning
+"Unsupervised learning finds hidden patterns and intrinsic structures in unlabeled datasets.",Machine Learning
+"Decision trees split features iteratively based on information gain or Gini impurity.",Machine Learning
+"Random forests construct an ensemble of decorrelated decision trees using bootstrap aggregating.",Machine Learning
+"Support Vector Machines find an optimal hyperplane maximizing the geometric margin between classes.",Machine Learning
+"K-means clustering partitions observations into k distinct clusters by minimizing inertia.",Machine Learning
+"Gradient descent updates model parameters in the opposite direction of the gradient of the loss function.",Machine Learning
+"The bias-variance tradeoff balances model underfitting and overfitting to minimize generalization error.",Machine Learning
+"K-fold cross-validation estimates out-of-sample performance by training on subsets and testing on holds.",Machine Learning
+"Feature scaling like standardization and min-max normalization prevents gradient instability.",Machine Learning
+"Linear regression models the relationship between dependent scalar variables and explanatory features.",Machine Learning
+"Logistic regression applies the sigmoid function to model the probability of binary outcomes.",Machine Learning
+"Regularization techniques such as L1 Lasso and L2 Ridge penalize large regression coefficients.",Machine Learning
+"Principal Component Analysis reduces dimensionality by projecting onto orthogonal eigenvectors.",Machine Learning
+"Evaluation metrics for classification include accuracy precision recall F1-score and ROC-AUC curve.",Machine Learning
+"Natural language processing enables computers to understand interpret and manipulate human language.",NLP
+"Tokenization breaks running text into smaller semantic units such as words subwords or characters.",NLP
+"Stemming and lemmatization reduce inflected words to their root or dictionary canonical base forms.",NLP
+"Term Frequency-Inverse Document Frequency reflects how important a word is to a document in a collection.",NLP
+"Word2Vec and GloVe learn continuous dense vector representations capturing semantic relationships between words.",NLP
+"Named Entity Recognition identifies and categorizes key information elements such as persons and places.",NLP
+"Part-of-speech tagging assigns grammatical categories like nouns verbs and adjectives to tokens.",NLP
+"Sentiment analysis classifies the emotional polarity and subjective opinion expressed in text.",NLP
+"N-gram language models predict the probability of the next word given a sequence of previous tokens.",NLP
+"Stop words removal filters out frequent functional words like the is at which add little lexical value.",NLP
+"Text summarization generates concise informative summaries using extractive or abstractive approaches.",NLP
+"Byte pair encoding constructs a subword vocabulary by iteratively merging frequent character pairs.",NLP
+"Corpus preprocessing involves casing normalization punctuation stripping and regex cleaning.",NLP
+"Semantic similarity measures cosine distance between contextualized sentence embeddings.",NLP
+"Information retrieval matches user queries against indexed documents using lexical BM25 ranking.",NLP
+"Linear algebra explores vector spaces linear transformations matrices and systems of equations.",Mathematics
+"Eigenvalues and eigenvectors satisfy the characteristic equation where matrix transformation scales the vector.",Mathematics
+"Matrix multiplication requires the inner dimensions of the matrices to match.",Mathematics
+"The determinant of a square matrix indicates whether the system has a unique non-trivial solution.",Mathematics
+"Differential calculus studies rates of change slopes of curves and tangent lines via derivatives.",Mathematics
+"Integral calculus calculates accumulated quantities areas under curves and continuous volumes.",Mathematics
+"The chain rule computes the derivative of composite functions by multiplying individual derivatives.",Mathematics
+"Partial derivatives measure the rate of change of a multivariable function along specific coordinate axes.",Mathematics
+"Probability theory studies random phenomena sample spaces conditional likelihoods and events.",Mathematics
+"Bayes theorem relates the conditional probability of an event given prior evidence and likelihood.",Mathematics
+"A normal distribution is a continuous symmetric bell-shaped probability distribution defined by mean and variance.",Mathematics
+"Expectation and variance quantify the central tendency and spread of random variables.",Mathematics
+"Singular Value Decomposition factorizes any real matrix into unitary and diagonal components.",Mathematics
+"Gradient vectors point in the direction of steepest ascent of a scalar field.",Mathematics
+"Hypothesis testing evaluates statistical significance through null hypotheses p-values and z-scores.",Mathematics
+"Deep learning architectures use multiple layers of nonlinear processing units to model complex abstractions.",Deep Learning
+"Artificial neural networks consist of interconnected input hidden and output neuron layers.",Deep Learning
+"Backpropagation computes gradients of the loss function with respect to weights using the chain rule.",Deep Learning
+"Convolutional neural networks use kernel filters pooling and stride to extract spatial visual patterns.",Deep Learning
+"Recurrent neural networks process sequential data by maintaining internal hidden states across time steps.",Deep Learning
+"Long Short-Term Memory networks solve vanishing gradients using input forget and output gates.",Deep Learning
+"Gated Recurrent Units simplify LSTM architecture by combining forget and input gates into an update gate.",Deep Learning
+"Activation functions like ReLU Sigmoid and Leaky ReLU introduce essential non-linearity into networks.",Deep Learning
+"Dropout randomly deactivates a fraction of neurons during training to prevent co-adaptation and overfitting.",Deep Learning
+"Batch normalization stabilizes neural network training by normalizing activations across mini-batches.",Deep Learning
+"Optimization algorithms like Adam RMSProp and SGD adapt learning rates for fast convergence.",Deep Learning
+"Vanishing and exploding gradients hinder training of deep neural networks across many layers.",Deep Learning
+"Autoencoders learn efficient low-dimensional data encodings in an unsupervised bottleneck manner.",Deep Learning
+"Generative Adversarial Networks train a generator and discriminator network in a zero-sum game.",Deep Learning
+"Residual networks employ skip connections to enable training of extremely deep neural models.",Deep Learning
+"Large language models are autoregressive neural models trained on massive corpora of text.",LLM
+"The Transformer architecture relies entirely on self-attention mechanisms without recurrent connections.",LLM
+"Multi-head self-attention computes scaled dot-product attention across multiple representation subspaces.",LLM
+"Positional encodings inject token order information into permutation-invariant transformer layers.",LLM
+"Prompt engineering optimizes input instructions few-shot examples and system prompts for LLM outputs.",LLM
+"Retrieval-Augmented Generation enhances LLM responses by retrieving relevant external document chunks.",LLM
+"Fine-tuning adapts pre-trained foundation models on domain-specific datasets using parameter-efficient methods.",LLM
+"Low-Rank Adaptation LoRA freezes base weights and trains lightweight low-rank decomposition matrices.",LLM
+"Reinforcement Learning from Human Feedback aligns language models with human preferences and safety.",LLM
+"Context window limits define the maximum number of prompt and generation tokens an LLM can process.",LLM
+"Hallucination refers to LLMs generating factually incorrect or ungrounded statements with high confidence.",LLM
+"Chain-of-thought prompting guides language models through intermediate logical steps to solve complex queries.",LLM
+"Temperature and top-p nucleus sampling control the randomness and diversity of model generations.",LLM
+"Quantization reduces memory requirements by converting float16 weights into 8-bit or 4-bit integers.",LLM
+"Vector embeddings map text passages into high-dimensional semantic spaces for semantic similarity lookup.",LLM
